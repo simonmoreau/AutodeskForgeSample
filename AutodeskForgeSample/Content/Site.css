@@ -22,3 +22,19 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.forgeViewer {
+    border:1px solid silver; padding: 0;
+    height:500px; vertical-align: middle;
+    background-repeat: no-repeat; background-position: center;
+    overflow: hidden;
+}
+
+#MyViewerDiv {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    /*overflow: hidden;*/ 
+    position: static;
+    background-color: #F0F8FF;
+}
