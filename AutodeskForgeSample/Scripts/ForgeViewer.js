@@ -44,7 +44,7 @@ function onDocumentLoadSuccess(doc) {
 
     // Choose any of the avialble viewables
     viewerApp.selectItem(viewables[0].data, onItemLoadSuccess, onItemLoadFail);
-   
+
 }
 
 /**
@@ -120,14 +120,20 @@ ForgeViewerExtension.prototype.onSelectionEvent = function (event) {
  * Triggered when I found properties for a selection item
  */
 function getPropertiesSuccess(parameters) {
-    var domElem = document.getElementById('MyPropertiesSelected');
-    domElem.innerText = parameters;
+    var domElem = document.getElementById("MyPropertiesSelected");
+
     var props = parameters.properties;
+    var propsTable = "<table class=\"table\">";
 
     for (var i = 0; i < props.length ; i++) {
-        
+        propsTable += "<tr><td>" + props[i].displayName + "</td><td>" + props[i].displayValue + "</td></tr>";
     }
+
+    propsTable += "</table>";
+
+    domElem.innerHTML = propsTable;
 }
+
 
 /**
  * Triggered when I found properties for a selection item
@@ -152,6 +158,33 @@ ForgeViewerExtension.prototype.load = function () {
     var lockBtn = document.getElementById('MyAwesomeLockButton');
     lockBtn.addEventListener('click', function () {
         viewer.setNavigationLock(true);
+    });
+
+    var sectionBtn = document.getElementById("MySectionView");
+    sectionBtn.addEventListener("click", function() {
+        document.getElementById("MyViewerDiv").onclick = function handleMouseClick(event) {
+            var position = viewer.clientToWorld(event.clientX, event.clientY, true);
+            if (position != null) {
+                var normal = position.face.normal;
+                var intersectPoint = position.intersectPoint;
+
+                var a = normal.x;
+                var b = normal.y;
+                var c = normal.z;
+
+                var x0 = intersectPoint.x;
+                var y0 = intersectPoint.y;
+                var z0 = intersectPoint.z;
+
+                var d = -a * x0 - b * y0 - c * z0;
+
+                var plane = [new THREE.Vector4(a, b, c, d)];
+
+                viewer.setCutPlanes(plane);
+            }
+
+            document.getElementById("MyViewerDiv").onclick = null;
+        }
     });
 
     var unlockBtn = document.getElementById('MyAwesomeUnlockButton');
