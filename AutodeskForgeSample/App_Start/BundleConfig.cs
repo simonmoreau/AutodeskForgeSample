@@ -21,7 +21,7 @@ namespace AutodeskForgeSample
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/material.min.js",
-                      
+                      "~/Scripts/display.js",
                       "~/Scripts/respond.js")); //"~/Scripts/bootstrap.js",
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
