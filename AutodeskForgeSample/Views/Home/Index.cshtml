@@ -2,49 +2,35 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="mdl-cell mdl-cell--6-col mdl-card mdl-shadow--4dp">
-    <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">ASP.NET</h2>
-    </div>
-    <div class="mdl-card__supporting-text">
-        ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.
-    </div>
-    <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent"
-           href="http://asp.net" data-upgraded=",MaterialButton,MaterialRipple">
-            Learn more &raquo;
-            <span class="mdl-button__ripple-container">
-                <span class="mdl-ripple"></span>
-            </span>
-        </a>
-    </div>
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p>
+        <a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a>
+    </p>
 </div>
 
-<div class="mdl-cell mdl-cell--6-col mdl-card mdl-shadow--4dp">
-    <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">Upload</h2>
-    </div>
-    <div class="mdl-card__supporting-text">
-        Please select a file and click on upload to start using the viewer.
-    </div>
-    <div class="mdl-card__actions mdl-card--border">
-        @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
 
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
-                <input class="mdl-textfield__input" placeholder="File" type="text" id="uploadFile" readonly />
-                <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
-                    <i class="material-icons">attach_file</i><input type="file" name="file" id="uploadBtn">
-                </div>
-            </div>
-            <label class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">
-                Upload
-                <input type="submit" name="Submit" id="Submit" style="display: none;" />
-            </label>
-        }
-
-    </div>
-</div>
+<div class="row">
+    @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="col-lg-4">
+            <div class="input-group">
+                <label class="btn btn-default btn-file">
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                    Choose file
+                    <input type="file" name="file" style="display: none;" onchange="$('#upload-file-info').html($(this).val());">
+                </label>
+                <span class='label label-info' id="upload-file-info"></span>
+                <label class="btn btn-default btn-file">
+                    <span class="glyphicon glyphicon-upload" aria-hidden="true" />
+                    Upload
+                    <input type="submit" name="Submit" id="Submit" style="display: none;" />
+                </label>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-4 -->
+    }
+</div><!-- /.row -->
 
 <div class="row">
     <div class="col-md-4">

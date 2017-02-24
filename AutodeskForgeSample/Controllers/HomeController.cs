@@ -117,7 +117,7 @@ namespace AutodeskForgeSample.Controllers
         public ActionResult ForgeViewer()
         {
             ViewBag.Message = "This is the Autodesk Forge Viewer.";
-            string test = "dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6Zm9yZ2VhcHAyMTM0MmI5Y2Y0YTc0Y2IwYjE3OTUzYjYyZmNmMzVkNi9TYW1wbGUxLmlmYw==";
+            string test = "dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6Zm9yZ2VhcHBhMTZlMWU0NzNjNWE0YzJhYTM2ZDk5ZWE0ZTE4MmEzNy9TYW1wbGUxLmlmYw==";
             return View((object)test);
         }
 
